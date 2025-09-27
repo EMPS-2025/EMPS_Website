@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="nav-logo">
           <Link href="/" className="logo-link">
             {/* Make sure your logo is in the `public` folder */}
-            <Image src="/ENERGY MINDS_LOGO.png" alt="Company Logo" width={150} height={50} className="logo-image" />
+            <Image src="/ENERGY MINDS_LOGO.png" alt="Company Logo" width={150} height={80} className="logo-image" />
           </Link>
           <div className="logo-pulse"></div>
         </div>
@@ -20,10 +20,8 @@ const Navbar = () => {
           <li><a href="#about" className="nav-link">About</a></li>
           <li><a href="#team" className="nav-link">Team</a></li>
           <li><a href="#services" className="nav-link">Services</a></li>
-          <li><a href="#journey" className="nav-link">Journey</a></li>
           <li><a href="#markets" className="nav-link">Markets</a></li>
           <li><a href="#clients" className="nav-link">Clients</a></li>
-          <li><a href="#testimonials" className="nav-link">Testimonials</a></li>
           <li>
             <a
               href="/EPSPL_TL_01.08.25_-1.pdf"
