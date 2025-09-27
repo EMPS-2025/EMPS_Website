@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="nav-logo">
           <Link href="/" className="logo-link">
             {/* Make sure your logo is in the `public` folder */}
-            <Image src="/ENERGY MINDS_LOGO.png" alt="Company Logo" width={150} height={80} className="logo-image" />
+            <Image src="/ENERGY MINDS_LOGO.png" alt="Company Logo" width={150} height={100} className="logo-image" />
           </Link>
           <div className="logo-pulse"></div>
         </div>
