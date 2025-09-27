@@ -78,7 +78,7 @@ const Contact = () => {
                             <div className="contact-icon">📍</div>
                             <div className="contact-details">
                                 <h4>Address</h4>
-                                <p>Tower –C, 503, Urbtech Trade Center, Sector -132, Noida (UP)</p>
+                                <p>Tower –C, 506-507, Urbtech Trade Center, Sector -132, Noida (UP)</p>
                             </div>
                             <div className="contact-pulse"></div>
                         </div>
