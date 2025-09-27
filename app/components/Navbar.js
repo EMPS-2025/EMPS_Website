@@ -24,6 +24,16 @@ const Navbar = () => {
           <li><a href="#markets" className="nav-link">Markets</a></li>
           <li><a href="#clients" className="nav-link">Clients</a></li>
           <li><a href="#testimonials" className="nav-link">Testimonials</a></li>
+          <li>
+            <a
+              href="/EPSPL_TL_01.08.25_-1.pdf"
+              className="nav-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Statutory Requirements
+            </a>
+          </li>
           <li><a href="#contact" className="nav-link">Contact</a></li>
         </ul>
       </div>
