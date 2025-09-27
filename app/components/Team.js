@@ -15,7 +15,7 @@ const Team = () => {
                 <div className="team-grid">
                     <div className="team-card glass-card" data-animation="slideUp">
                         <div className="team-avatar">💼</div>
-                        <h3>The Trader</h3>
+                        <h3>Anmol Sirohi</h3>
                         <p className="team-role">Power Trading & Market Operations</p>
                         <p className="team-background">
                             Ex- Kreate, Founder – ENERCHAIN and Co-founder: EnergyMinds
@@ -29,7 +29,7 @@ const Team = () => {
 
                     <div className="team-card glass-card" data-animation="slideUp">
                         <div className="team-avatar">⚡</div>
-                        <h3>The Integrator</h3>
+                        <h3>Samyak Singh</h3>
                         <p className="team-role">Technology Integration & Systems</p>
                         <p className="team-background">MS(IT) – Worcester, USA</p>
                         <p className="team-education">
