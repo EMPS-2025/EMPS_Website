@@ -35,6 +35,24 @@ a {
   text-decoration: none;
 }
 
+.form-status {
+  margin-top: 1rem;
+  min-height: 1.5rem;
+}
+
+.form-status__message {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.form-status__message--success {
+  color: #22c55e;
+}
+
+.form-status__message--error {
+  color: #ef4444;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

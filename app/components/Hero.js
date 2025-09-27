@@ -1,7 +1,85 @@
-import Link from 'next/link';
-import Image from 'next/image';
+"use client";
+
+import { useEffect, useRef } from 'react';
 
 const Hero = () => {
+  const statRefs = useRef([]);
+
+  useEffect(() => {
+    const elements = statRefs.current.filter(Boolean);
+    if (!elements.length) return;
+
+    const animationDuration = 2000;
+    const frameIds = new Map();
+
+    const animateValue = (element, target) => {
+      const numberEl = element.querySelector('.stat-number');
+      if (!numberEl) return;
+
+      let startTimestamp;
+
+      const step = (timestamp) => {
+        if (startTimestamp === undefined) {
+          startTimestamp = timestamp;
+        }
+
+        const progress = Math.min((timestamp - startTimestamp) / animationDuration, 1);
+        const current = Math.floor(progress * target);
+        numberEl.textContent = current.toLocaleString();
+
+        if (progress < 1) {
+          frameIds.set(element, requestAnimationFrame(step));
+        } else {
+          numberEl.textContent = target.toLocaleString();
+          frameIds.delete(element);
+        }
+      };
+
+      frameIds.set(element, requestAnimationFrame(step));
+    };
+
+    const observers = elements.map((element) => {
+      const target = Number(element.dataset.count ?? 0);
+      if (!Number.isFinite(target) || target <= 0) {
+        const numberEl = element.querySelector('.stat-number');
+        if (numberEl) {
+          numberEl.textContent = target.toLocaleString();
+        }
+        return null;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              animateValue(entry.target, target);
+            }
+          });
+        },
+        { threshold: 0.35 }
+      );
+
+      observer.observe(element);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer, index) => {
+        if (observer) {
+          const element = elements[index];
+          if (element) {
+            observer.unobserve(element);
+          }
+          observer.disconnect();
+        }
+      });
+
+      frameIds.forEach((id) => cancelAnimationFrame(id));
+      frameIds.clear();
+    };
+  }, []);
+
   return (
     <section id="hero" className="hero-section">
       <div className="neural-network-bg"></div>
@@ -20,17 +98,35 @@ const Hero = () => {
           </p>
           
           <div className="hero-stats">
-            <div className="stat-item" data-count="950">
+            <div
+              className="stat-item"
+              data-count="950"
+              ref={(element) => {
+                statRefs.current[0] = element;
+              }}
+            >
               <span className="stat-number">0</span>
               <span className="stat-unit">MUs</span>
               <span className="stat-label">Power Traded Till date</span>
             </div>
-            <div className="stat-item" data-count="5">
+            <div
+              className="stat-item"
+              data-count="5"
+              ref={(element) => {
+                statRefs.current[1] = element;
+              }}
+            >
               <span className="stat-number">0</span>
               <span className="stat-unit">Years</span>
               <span className="stat-label">Market Experience</span>
             </div>
-            <div className="stat-item" data-count="200">
+            <div
+              className="stat-item"
+              data-count="200"
+              ref={(element) => {
+                statRefs.current[2] = element;
+              }}
+            >
               <span className="stat-number">0</span>
               <span className="stat-unit">MUs</span>
               <span className="stat-label">Green Energy Traded FY24-25</span>

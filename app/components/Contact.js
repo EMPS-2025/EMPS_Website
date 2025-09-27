@@ -1,7 +1,45 @@
-import Link from 'next/link'; // Use Next.js Link for navigation
-import Image from 'next/image'; // Use Next.js Image for optimization
+"use client";
+
+import { useState } from 'react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        message: '',
+    });
+    const [status, setStatus] = useState('idle');
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setStatus('loading');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send message');
+            }
+
+            setStatus('success');
+            setFormData({ name: '', email: '', company: '', service: '', message: '' });
+        } catch (error) {
+            console.error('Contact form submission error:', error);
+            setStatus('error');
+        }
+    };
+
     return (
         <section id="contact" className="contact-section">
             <div className="container">
@@ -46,23 +84,50 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="contact-form-container">
-                        <form className="contact-form glass-card" data-animation="slideUp">
+                        <form className="contact-form glass-card" data-animation="slideUp" onSubmit={handleSubmit}>
                             <h3>Start Your Trading Journey</h3>
                             <div className="form-group">
                                 <label className="form-label">Name</label>
-                                <input type="text" className="form-control cyber-input" required />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    className="form-control cyber-input"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className="form-group">
                                 <label className="form-label">Email</label>
-                                <input type="email" className="form-control cyber-input" required />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    className="form-control cyber-input"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className="form-group">
                                 <label className="form-label">Company</label>
-                                <input type="text" className="form-control cyber-input" required />
+                                <input
+                                    type="text"
+                                    name="company"
+                                    className="form-control cyber-input"
+                                    value={formData.company}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className="form-group">
                                 <label className="form-label">Service Interest</label>
-                                <select className="form-control cyber-input" required>
+                                <select
+                                    className="form-control cyber-input"
+                                    name="service"
+                                    value={formData.service}
+                                    onChange={handleChange}
+                                    required
+                                >
                                     <option value="">Select a service</option>
                                     <option value="coal-trading">Coal/Pellets Trading</option>
                                     <option value="risk-management">Optimization & Risk Management</option>
@@ -75,12 +140,36 @@ const Contact = () => {
                             </div>
                             <div className="form-group">
                                 <label className="form-label">Message</label>
-                                <textarea className="form-control cyber-input" rows="4" required></textarea>
+                                <textarea
+                                    className="form-control cyber-input"
+                                    name="message"
+                                    rows="4"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
                             </div>
-                            <button type="submit" className="btn btn--primary btn--full-width cyber-btn">
-                                <span className="btn-text">Send Message</span>
+                            <button
+                                type="submit"
+                                className="btn btn--primary btn--full-width cyber-btn"
+                                disabled={status === 'loading'}
+                            >
+                                <span className="btn-text">{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
                                 <div className="btn-glow"></div>
                             </button>
+                            <div className="form-status" aria-live="polite">
+                                {status === 'success' && (
+                                    <p className="form-status__message form-status__message--success">
+                                        Thank you for reaching out! We will get back to you shortly.
+                                    </p>
+                                )}
+                                {status === 'error' && (
+                                    <p className="form-status__message form-status__message--error">
+                                        We&apos;re sorry, but something went wrong. Please try again later or contact us directly at
+                                        <a href="mailto:marketing@energyminds.in"> marketing@energyminds.in</a>.
+                                    </p>
+                                )}
+                            </div>
                         </form>
                     </div>
                 </div>
