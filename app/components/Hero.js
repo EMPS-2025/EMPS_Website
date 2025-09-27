@@ -94,7 +94,7 @@ const Hero = () => {
             sustainable energy management.
           </p>
           <p className="hero-description">
-            <em>We are now Pvt. Ltd from LLP</em>
+            <em>Now incorporated as a Private Limited company (formerly LLP)</em>
           </p>
           
           <div className="hero-stats">
