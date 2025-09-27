@@ -43,12 +43,12 @@ const Team = () => {
 
                     <div className="team-card glass-card" data-animation="slideUp">
                         <div className="team-avatar">🏦</div>
-                        <h3>The Banker</h3>
-                        <p className="team-role">Financial Strategy & Risk Management</p>
-                        <p className="team-background">Co-founder : ABC</p>
+                        <h3>Amit</h3>
+                        <p className="team-role">Operations & Accounts</p>
+                        <p className="team-background">Electrical Engineer</p>
                         <div className="expertise-tags">
-                            <span className="tag">Finance</span>
-                            <span className="tag">Risk</span>
+                            <span className="tag">Operations</span>
+                            <span className="tag">Accounts</span>
                         </div>
                     </div>
                 </div>
