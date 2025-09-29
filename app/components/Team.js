@@ -18,7 +18,7 @@ const Team = () => {
                         <h3>Anmol Sirohi</h3>
                         <p className="team-role">Power Trading & Market Operations</p>
                         <p className="team-background">
-                            Ex- Kreate, Founder – ENERCHAIN and Co-founder: EnergyMinds
+                            Founder – ENERCHAIN and Co-founder & Director: EnergyMinds
                         </p>
                         <p className="team-education">MBA (Power) - NPTI</p>
                         <div className="expertise-tags">
