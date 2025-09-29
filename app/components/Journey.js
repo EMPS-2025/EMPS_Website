@@ -115,7 +115,7 @@ const Journey = () => {
                             <div className="marker-glow"></div>
                         </div>
                         <div className="milestone-content glass-card">
-                            <div className="milestone-date">January 2025</div>
+                            <div className="milestone-date">August 2025</div>
                             <h4>Regulatory</h4>
                             <p>Petition filed with CERC for Trading Licensee</p>
                             <div className="milestone-category high">Regulatory</div>
