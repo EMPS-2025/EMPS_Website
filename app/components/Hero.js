@@ -1,5 +1,5 @@
-// app/components/Hero.js
 "use client";
+
 import { useEffect, useRef } from "react";
 
 const Hero = () => {
@@ -9,52 +9,57 @@ const Hero = () => {
     const elements = statRefs.current.filter(Boolean);
     if (!elements.length) return;
 
-    const animationDuration = 2000;
+    const duration = 2000;
     const frameIds = new Map();
 
     const animateValue = (element, target) => {
       const numberEl = element.querySelector(".stat-number");
       if (!numberEl) return;
 
-      let startTimestamp;
-      const step = (ts) => {
-        if (startTimestamp === undefined) startTimestamp = ts;
-        const progress = Math.min((ts - startTimestamp) / animationDuration, 1);
+      let startTime;
+      const step = (timestamp) => {
+        if (startTime === undefined) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
         const current = Math.floor(progress * target);
         numberEl.textContent = current.toLocaleString();
         if (progress < 1) {
           frameIds.set(element, requestAnimationFrame(step));
         } else {
           numberEl.textContent = target.toLocaleString();
+          frameIds.delete(element);
         }
       };
       frameIds.set(element, requestAnimationFrame(step));
     };
 
-    const observers = elements.map((el) => {
-      const target = Number(el.dataset.count ?? 0);
-      if (!Number.isFinite(target) || target <= 0) {
-        const numberEl = el.querySelector(".stat-number");
-        if (numberEl) numberEl.textContent = target.toLocaleString();
-        return null;
-      }
-      const ob = new IntersectionObserver(
+    const observers = elements.map((element) => {
+      const target = Number(element.dataset.count ?? 0);
+      if (!Number.isFinite(target) || target <= 0) return null;
+
+      const observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              ob.unobserve(e.target);
-              animateValue(e.target, target);
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              animateValue(entry.target, target);
             }
           });
         },
-        { threshold: 0.35 }
+        { threshold: 0.4 }
       );
-      ob.observe(el);
-      return ob;
+
+      observer.observe(element);
+      return observer;
     });
 
     return () => {
-      observers.forEach((ob) => ob?.disconnect());
+      observers.forEach((obs, i) => {
+        if (obs) {
+          const el = elements[i];
+          obs.unobserve(el);
+          obs.disconnect();
+        }
+      });
       frameIds.forEach((id) => cancelAnimationFrame(id));
       frameIds.clear();
     };
@@ -62,63 +67,62 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero-section">
-      <div className="neural-network-bg" />
-
-      <div className="hero-container">
-        {/* LEFT COLUMN: TEXT */}
-        <div className="hero-content">
-          <h1 className="hero-title" id="heroTitle">
-            THINK.ACT.SAVE
-          </h1>
+      <div className="hero-grid">
+        {/* LEFT: Text + stats */}
+        <div className="hero-left">
+          <h1 className="hero-title">THINK.ACT.SAVE</h1>
           <p className="hero-subtitle">Energy Minds Power Solutions Private Limited</p>
-          <p className="hero-tagline">Empowering Trade Through Technology</p>
           <p className="hero-description">
-            Technology-integrated energy trading platform delivering comprehensive solutions with
-            data-driven insights, real-time market intelligence, and strategic optimization for
-            sustainable energy management.
-          </p>
-          <p className="hero-description">
-            <em>We are now Pvt. Ltd from LLP</em>
+            Technology-integrated energy trading platform delivering comprehensive
+            solutions with data-driven insights, real-time market intelligence, and
+            strategic optimization for sustainable energy management.
           </p>
 
+          {/* Stats */}
           <div className="hero-stats">
-            <div className="stat-item" data-count="950" ref={(el) => (statRefs.current[0] = el)}>
+            <div
+              className="stat-item"
+              data-count="950"
+              ref={(el) => (statRefs.current[0] = el)}
+            >
               <span className="stat-number">0</span>
               <span className="stat-unit">MUs</span>
-              <span className="stat-label">Power Traded Till date</span>
+              <span className="stat-label">Power Traded Till Date</span>
             </div>
-            <div className="stat-item" data-count="5" ref={(el) => (statRefs.current[1] = el)}>
+            <div
+              className="stat-item"
+              data-count="5"
+              ref={(el) => (statRefs.current[1] = el)}
+            >
               <span className="stat-number">0</span>
               <span className="stat-unit">Years</span>
               <span className="stat-label">Market Experience</span>
             </div>
-            <div className="stat-item" data-count="200" ref={(el) => (statRefs.current[2] = el)}>
+            <div
+              className="stat-item"
+              data-count="200"
+              ref={(el) => (statRefs.current[2] = el)}
+            >
               <span className="stat-number">0</span>
               <span className="stat-unit">MUs</span>
               <span className="stat-label">Green Energy Traded FY24-25</span>
             </div>
           </div>
 
+          {/* Buttons */}
           <div className="hero-buttons">
-            <a href="#our-solutions" className="btn btn--primary btn--lg cyber-btn">
-              <span className="btn-text">Discover Our Solutions</span>
-              <div className="btn-glow"></div>
-            </a>
-            <a href="#contact" className="btn btn--outline btn--lg cyber-btn">
-              <span className="btn-text">Start Trading</span>
-              <div className="btn-glow"></div>
-            </a>
+            <a href="#services" className="btn btn--primary">Discover Our Solutions</a>
+            <a href="#contact" className="btn btn--outline">Start Trading</a>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: ORB (sibling grid item) */}
-        <div className="hero-visual">
-          <div className="energy-orb">
-            <div className="orb-core"></div>
-            <div className="orb-ring ring-1"></div>
-            <div className="orb-ring ring-2"></div>
-            <div className="orb-ring ring-3"></div>
-            <div className="energy-particles"></div>
+        {/* RIGHT: Slideshow */}
+        <div className="hero-right">
+          <div className="hero-slideshow">
+            <div className="slide" style={{ backgroundImage: "url('/hero1.png')" }}></div>
+            <div className="slide" style={{ backgroundImage: "url('/hero2.png')" }}></div>
+            <div className="slide" style={{ backgroundImage: "url('/hero3.png')" }}></div>
+            <div className="slide" style={{ backgroundImage: "url('/hero4.png')" }}></div>
           </div>
         </div>
       </div>
