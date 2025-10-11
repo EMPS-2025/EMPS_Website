@@ -2656,3 +2656,26 @@ body {
   .ring-2 { width: 220px; height: 220px; }
   .ring-3 { width: 290px; height: 290px; }
 }
+
+
+select.form-control option {
+  background-color: #f8fafc;   /* light popup bg */
+  color: #0f172a;              /* dark text */
+}
+
+@media (prefers-color-scheme: dark) {
+  select.form-control option {
+    background-color: #0b1220; /* dark popup bg */
+    color: #f8fafc;            /* light text */
+  }
+}
+
+/* If you manually force theme via data-color-scheme */
+[data-color-scheme="dark"] select.form-control option {
+  background-color: #0b1220;
+  color: #f8fafc;
+}
+[data-color-scheme="light"] select.form-control option {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
