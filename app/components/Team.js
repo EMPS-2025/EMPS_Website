@@ -28,7 +28,7 @@ const Team = () => {
                     </div>
 
                     <div className="team-card glass-card" data-animation="slideUp">
-                        <div className="team-avatar">⚡</div>
+                        <div className="team-avatar">🧑‍💻</div>
                         <h3>Samyak Singh</h3>
                         <p className="team-role">Technology Integration & Systems</p>
                         <p className="team-background">MS(IT) – Worcester, USA</p>
@@ -42,7 +42,7 @@ const Team = () => {
                     </div>
 
                     <div className="team-card glass-card" data-animation="slideUp">
-                        <div className="team-avatar">🏦</div>
+                        <div className="team-avatar">⚛︎</div>
                         <h3>Amit</h3>
                         <p className="team-role">Operations & Accounts</p>
                         <p className="team-background">Electrical Engineer</p>
