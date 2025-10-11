@@ -1480,9 +1480,9 @@ body {
 
 /* Staggered timing: 0s, 2s, 4s, 6s */
 .slide-1 { animation-delay: 0s; }
-.slide-2 { animation-delay: 2s; }
-.slide-3 { animation-delay: 4s; }
-.slide-4 { animation-delay: 6s; }
+.slide-2 { animation-delay: 5s; }
+.slide-3 { animation-delay: 9s; }
+.slide-4 { animation-delay: 13s; }
 
 @keyframes deckCycle {
   0%   { opacity: 0; transform: scale(1.05); }
