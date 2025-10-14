@@ -11,6 +11,7 @@ export default function RootLayout({children}) {
       <body>
         <Navbar />
           <main>{children}</main>
+          <Analytics />
 <ScrollToTopButton />
         <Footer />
       </body>
