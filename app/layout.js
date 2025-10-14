@@ -13,6 +13,7 @@ export default function RootLayout({children}) {
           <main>{children}</main>
 <ScrollToTopButton />
         <Footer />
+    <Analytics />
       </body>
     </html>
   );
