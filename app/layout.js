@@ -14,6 +14,7 @@ export default function RootLayout({children}) {
           <Analytics />
 <ScrollToTopButton />
         <Footer />
+    <Analytics />
       </body>
     </html>
   );
