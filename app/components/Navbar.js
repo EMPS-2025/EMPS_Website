@@ -65,6 +65,17 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+            <li>
+    <a
+      href="https://em-spark.energyminds.co.in"
+      className="nav-link em-spark-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={closeMenu}
+    >
+      EM-Spark
+    </a>
+  </li>
           <li>
             <a
               href="/EPSPL_TL_01.08.25_-1.pdf"
