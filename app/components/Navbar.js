@@ -8,7 +8,6 @@ import Image from 'next/image'; // Use Next.js Image for optimization
 const navLinks = [
   { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About' },
-  { href: '#team', label: 'Team' },
   { href: '#services', label: 'Services' },
   { href: '#markets', label: 'Markets' },
   { href: '#clients', label: 'Clients' },
@@ -66,16 +65,16 @@ const Navbar = () => {
             </li>
           ))}
             <li>
-    <a
-      href="https://em-spark.energyminds.co.in"
-      className="nav-link"
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={closeMenu}
-    >
-      EM-Spark
-    </a>
-  </li>
+              <a
+                href="https://em-spark.energyminds.co.in"
+                className="nav-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+              >
+                EM-Spark
+              </a>
+          </li>
           <li>
             <a
               href="/EPSPL_TL_01.08.25_-1.pdf"
