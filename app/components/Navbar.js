@@ -68,7 +68,7 @@ const Navbar = () => {
             <li>
     <a
       href="https://em-spark.energyminds.co.in"
-      className="nav-link em-spark-btn"
+      className="nav-link"
       target="_blank"
       rel="noopener noreferrer"
       onClick={closeMenu}
