@@ -1,6 +1,9 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Analytics } from "@vercel/analytics/next"
+import LicenseBanner from './components/LicenseBanner'; // <-- 1. IMPORT THE NEW COMPONENT
+
+
 
 import './globals.css'; // This is where your styles will go
 import ScrollToTopButton from "./components/ScrollToTopButton";
@@ -17,6 +20,7 @@ export default function RootLayout({children}) {
   return(
     <html lang="en">
       <body>
+        <LicenseBanner /> {}
         <Navbar />
           <main>{children}</main>
           <Analytics />
