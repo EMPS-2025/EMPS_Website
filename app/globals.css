@@ -319,7 +319,7 @@ body {
 }
 
 main {
-  padding-top: var(--nav-height);
+  padding-top: calc(var(--nav-height) + 40px);
 }
 
 *,
@@ -923,7 +923,7 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.05);
   /*line-height: 1;*/
   position: fixed;
-  top: 0;
+  top: 40px;
   left: 0;
   right: 0;
   /*background: rgba(15, 23, 42, 0.9); */
@@ -2675,6 +2675,59 @@ select.form-control option {
   background-color: #0b1220;
   color: #f8fafc;
 }
+
+/* --- CERC License Banner Animation --- */
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.license-banner-container {
+  background-color: #004a99;
+  color: #ffffff;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001; /* This makes it stay on top of other elements */
+}
+
+.license-banner-content {
+  display: inline-block;
+  animation: scroll-left 10s linear infinite; 
+}
+
+.license-banner-content span {
+  display: inline-block;
+  padding-right: 20px;
+}
+
+.license-banner-content:hover {
+  animation-play-state: paused;
+}
+
+.banner-link {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.banner-link:hover {
+  color: #bbdefb; /* A lighter blue on hover */
+}
+
 [data-color-scheme="light"] select.form-control option {
   background-color: #f8fafc;
   color: #0f172a;
