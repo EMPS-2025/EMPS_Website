@@ -6,12 +6,12 @@ import Link from 'next/link'; // Use Next.js Link for navigation
 import Image from 'next/image'; // Use Next.js Image for optimization
 
 const navLinks = [
-  { href: '#hero', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#markets', label: 'Markets' },
-  { href: '#clients', label: 'Clients' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#hero', label: 'Home' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#markets', label: 'Markets' },
+  { href: '/#clients', label: 'Clients' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 const Navbar = () => {
@@ -40,7 +40,7 @@ const Navbar = () => {
           </Link>
           <div className="logo-pulse"></div>
         </div>
-                <button
+        <button
           type="button"
           className={`nav-toggle${isMenuOpen ? ' nav-toggle--open' : ''}`}
           aria-expanded={isMenuOpen}
@@ -64,27 +64,25 @@ const Navbar = () => {
               </a>
             </li>
           ))}
-            <li>
-              <a
-                href="https://em-spark.energyminds.co.in"
-                className="nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-              >
-                EM-Spark
-              </a>
-          </li>
           <li>
             <a
-              href="/EPSPL_TL_01.08.25_-1.pdf"
+              href="https://em-spark.energyminds.co.in"
               className="nav-link"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
             >
-              Statutory Requirements
+              EM-Spark
             </a>
+          </li>
+        <li>
+            <Link
+              href="/statutory-requirements"
+              className="nav-link"
+              onClick={closeMenu}
+            >
+              Statutory Requirements
+            </Link>
           </li>
         </ul>
       </div>
