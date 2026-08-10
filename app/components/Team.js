@@ -43,12 +43,14 @@ const Team = () => {
 
                     <div className="team-card glass-card" data-animation="slideUp">
                         <div className="team-avatar">⚛︎</div>
-                        <h3>Amit</h3>
-                        <p className="team-role">Operations & Accounts</p>
-                        <p className="team-background">Electrical Engineer</p>
+                        <h3>Atul Shrivastav</h3>
+                        <p className="team-role">Marketing</p>
+                        <p className="team-background">12 years of extensive experience in the Indian power sector.</p>
                         <div className="expertise-tags">
-                            <span className="tag">Operations</span>
-                            <span className="tag">Accounts</span>
+                            <span className="tag">Power Sector</span>
+                            <span className="tag">Power Regulatory</span>
+                            <span className="tag">Open Access</span>
+                            <span className="tag">C&amp;I Client Management</span>
                         </div>
                     </div>
                 </div>
