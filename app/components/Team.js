@@ -47,10 +47,9 @@ const Team = () => {
                         <p className="team-role">Marketing</p>
                         <p className="team-background">12 years of extensive experience in the Indian power sector.</p>
                         <div className="expertise-tags">
-                            <span className="tag">Power Sector</span>
                             <span className="tag">Power Regulatory</span>
                             <span className="tag">Open Access</span>
-                            <span className="tag">C&amp;I Client Management</span>
+                            <span className="tag">C&amp;I Clients</span>
                         </div>
                     </div>
                 </div>
